@@ -51,6 +51,11 @@
                         </span>
                     </a>
                     <div
+                        v-if="hasFooterSlot"
+                        class="dropdown-item">
+                        <slot name="footer"/>
+                    </div>
+                    <div
                         v-if="data.length === 0 && hasEmptySlot"
                         class="dropdown-item is-disabled">
                         <slot name="empty"/>
@@ -140,6 +145,13 @@
              */
             hasHeaderSlot() {
                 return !!this.$slots.header
+            },
+
+            /**
+             * Check if exists "footer" slot
+             */
+            hasFooterSlot() {
+                return !!this.$slots.footer
             }
         },
         watch: {
